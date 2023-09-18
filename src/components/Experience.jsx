@@ -3,16 +3,14 @@ import styled from 'styled-components';
 
 const Experience = () => {
   return (
-    <Container>
+    <Container id='Experience'>
       <Exp>
-       <h1 style={{marginTop:'10%',marginBottom:'6%',fontSize:'50px',
-        textDecoration:'underline',textDecorationColor:'#9395d3',  
-        textDecorationStyle:'double'}}>EXPERIENCE</h1>
+       <Heading>EXPERIENCE</Heading>
 
 
         <Card>
           <CardText>
-            <p style={{fontSize:'20px',marginTop:'1px',textAlign:'left'}}>Business Web Solutions <br />
+            <p style={{fontSize:'20px',marginTop:'50px',textAlign:'left'}}>Business Web Solutions <br />
             <span style={{fontSize:'40px',fontWeight:'bold'}}>Software Intern</span><span>  <h6 style={{marginTop:'10px',marginBottom:'20px',fontSize:'15px'}}>March 2022 to March 2023</h6></span>
             </p>
             <Skills>
@@ -27,10 +25,14 @@ const Experience = () => {
               <p>Agile</p>
             </Tech>
             </Skills>
-            <Button>View Project</Button>
-            <p style={{fontSize:'20px',textAlign:'left'}}> 1 year internship experience in agile environment. Collaborated with highly skilled and passionate engineers to develop 
-            frontend using react and redux.Also got the chance to help the backend team using express and NodeJS.
-            </p>
+            <p style={{fontSize:'25px',textAlign:'left'}}> My role encompassed both front-end and back-end development, where I designed and implemented user interfaces using React and Redux,
+             ensuring a seamless and engaging user experience. On the server-side, I successfully 
+             implemented Express and NodeJS functionalities, collaborating closely with my fellow 
+             engineers.</p>
+            <p style={{fontSize:'25px',textAlign:'left'}}>Our work environment followed agile methodologies, and I actively participated in agile scrum meetings.
+             Additionally, I played a key role in modeling MongoDB schemas, integrating them efficiently with existing APIs to optimize data handling.</p>
+
+            
           </CardText>
           <CardImg>
           <img src="./images/girl.png" style={{}}/>
@@ -73,23 +75,36 @@ gap:20px;
 justify-content:center;
 // align-items:center;
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   flex-direction:column;
    align-items:center;
    gap:0px;
 }
 `
+const Heading = styled.h1`
+margin-top:10%;
+margin-bottom:6%;
+font-size:50px;
+text-decoration:underline;
+text-decoration-color:#9395d3;  
+text-decoration-style:double;
+@media (max-width: 900px) {
+  font-size:40px;
+}
+`
+
 const CardText = styled.div`
 // background-color:#b3b7ee;
 min-height:400px;
-max-width:400px;
+max-width:50%;
 display:flex;
 text-justify:auto;
 flex-direction:column;
-
-@media (max-width: 900px) {
-  
+@media (max-width: 1100px) {
+  max-width:80%;
 }
+
+
 `
 const CardImg = styled.div`
 display:flex;
@@ -128,23 +143,6 @@ p{
   background-color: #9395d3;
   padding:5px;
   margin-bottom:0px;
-}
-`
-
-const Button = styled.button`
-// margin:10px auto;
-width:150px;
-height:50px;
-pading:5px;
-margin-top:15px;
-// background-color:#9395d3;
-background-color: #a2a3bb;
-font-weight:bold;
-font-size:20px;
-// border-radius:10%;
-&:hover {
-    transform: scale(1.05);
-    background-color:#b3b7ee;
 }
 `
 

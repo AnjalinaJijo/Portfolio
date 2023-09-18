@@ -1,13 +1,12 @@
+import { Description } from '@mui/icons-material';
 import React from 'react'
 import styled from 'styled-components';
 
 const Projects = () => {
   return (
-    <Container>
+    <Container id='Projects'>
       <Project>
-      <h1 style={{marginTop:'10%',marginBottom:'6%',fontSize:'50px',
-        textDecoration:'underline',textDecorationColor:'#9395d3',  
-        textDecorationStyle:'double'}}>PROJECTS</h1>
+      <Heading>PROJECTS</Heading>
         <Card >
           <CardText>
             <p style={{marginTop:'50px',fontSize:'20px',textAlign:'left'}}>MERN Stack | Full Stack <br />
@@ -23,11 +22,15 @@ const Projects = () => {
             </Tech>
             </Skills>
             <Button>View Project</Button>
-            <p style={{fontSize:'20px',textAlign:'left',textJustify:'inter-word'}}> A website that allows disaster survivors to check in so that their dear ones know that they are safe.
+            <Describe > 
+           <p> A MERN stack application that allows disaster survivors to check in so that their
+              dear ones know that they are safe.
               Anyone can access this site to see if their dear ones are checked in and are safe.
-              The last tracked location of the checked person is obtained and stored. 
-              Real time weather information is also obtained.
-            </p>
+              The last tracked location of the checked person is obtained and stored. </p>
+      <p>It enables individuals to quickly check the safety status of their loved ones, reducing anxiety and uncertainty.
+      This is a valuable tool for emergency management agencies to manage and track safe individuals efficiently.
+              Successfully developed a web application that serves a critical purpose during disasters.</p>
+            </Describe>
           </CardText>
           <CardImg>
           <img src="./images/NDH.png" style={{marginTop:'100px'}}/>
@@ -47,11 +50,14 @@ const Projects = () => {
             </Tech>
             </Skills>
             <Button>View Project</Button>
-            <p style={{fontSize:'20px',textAlign:'left',textJustify:'inter-word'}}> A website that allows disaster survivors to check in so that their dear ones know that they are safe.
-              Anyone can access this site to see if their dear ones are checked in and are safe.
-              The last tracked location of the checked person is obtained and stored. 
-              Real time weather information is also obtained.
-            </p>
+            <Describe>
+
+            <p>A travel website aimed at helping users find hotels, restaurants, and attractions based on specified location.
+            Integrated Rapid API to fetch data on hotels, restaurants, and attractions in the specified location, ensuring current and accurate information.</p>
+           <p>Also implemented search and filtering options, allowing users to narrow down their choices based on preferences such as rating, cuisine, or number of adults.
+            Provided in-depth information on each listing, including descriptions, ratings, photos, and websites.</p>
+   
+            </Describe>
           </CardText>
           <CardImg>
           <img src="./images/TravelCompanion.png" style={{marginTop:'110px'}}/>
@@ -84,6 +90,17 @@ justify-content:center;
 align-items:center;
 text-align:center;
 `
+const Heading = styled.h1`
+margin-top:10%;
+margin-bottom:6%;
+font-size:50px;
+text-decoration:underline;
+text-decoration-color:#9395d3;  
+text-decoration-style:double;
+@media (max-width: 900px) {
+  font-size:40px;
+}
+`
 
 const Card = styled.div`
 display:flex;
@@ -91,7 +108,7 @@ gap:30px;
 justify-content:center;
 // align-items:center;
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   flex-direction:column;
    align-items:center;
    gap:0px;
@@ -100,11 +117,21 @@ justify-content:center;
 const CardText = styled.div`
 // background-color:#b3b7ee;
 min-height:400px;
-max-width:400px;
+max-width:50%;
 display:flex;
 flex-direction:column;
 // flex-wrap:wrap;
+@media (max-width: 1100px) {
+  max-width:80%;
+}
 `
+const Describe = styled.p`
+font-size:25px;
+text-align:left;
+text-justify:inter-word;
+
+`
+
 const CardImg = styled.div`
 display:flex;
 img{

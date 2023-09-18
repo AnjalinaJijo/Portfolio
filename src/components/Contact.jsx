@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
+
 import Link from '@mui/material/Link';
 
 
@@ -66,10 +67,8 @@ const Contact = () => {
   };
 
   return (
-    <Container>
-        <h1 style={{marginTop:'10%',marginBottom:'6%',fontSize:'50px',
-        textDecoration:'underline',textDecorationColor:'#9395d3',  
-        textDecorationStyle:'double'}}>CONTACT</h1>
+    <Container id='Contact'>
+        <Heading>CONTACT</Heading>
     <Wrap>
       <Form onSubmit={handleSubmit}>
       <Label>
@@ -99,7 +98,7 @@ const Contact = () => {
         </Link>
         </Icons>
         <Icons>
-        <Link href="www.linkedin.com/in/anjalina-jijo/" alt="GitHub" sx={{textDecoration:'none'}}>
+        <Link href="https://www.linkedin.com/in/anjalina-jijo/" alt="GitHub" sx={{textDecoration:'none'}}>
           
           <LinkedInIcon size="large" sx={{height:'85px',width:'85px',color:'#9395d3'}}/>
           {/* <p style={{fontSize:'20px',fontWeight:'bold',color:'#000807'}}>GitHub</p> */}
@@ -130,6 +129,17 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 `
+const Heading = styled.h1`
+margin-top:10%;
+margin-bottom:6%;
+font-size:50px;
+text-decoration:underline;
+text-decoration-color:#9395d3;  
+text-decoration-style:double;
+@media (max-width: 900px) {
+  font-size:40px;
+}
+`
 const Wrap = styled.div `
 height:auto;
 width:100vw;
@@ -138,6 +148,7 @@ display:flex;
 gap:20px;
 margin-right:10px;
 margin-left:70px;
+margin-top:50px;
 @media (max-width: 900px) {
   flex-direction:column;
   margin-right:10px;

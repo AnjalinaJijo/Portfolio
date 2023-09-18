@@ -1,21 +1,12 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState } from 'react'
 import styled from'styled-components'
-import { NavLink as Link } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 
+import { HashLink } from 'react-router-hash-link';
+
 const Navbar = () => {
   const [isClicked,setIsClicked] = useState(false)
-  const [matches, setMatches] = useState(
-    window.matchMedia("(max-width: 768px)").matches
-  )
-
-  useEffect(() => {
-    window
-    .matchMedia("(max-width: 768px)")
-    .addEventListener('change', e => setMatches( e.matches ));
-  }, []);
-
   const handleClick = ()=>{
     setIsClicked(!isClicked);
   }
@@ -26,9 +17,14 @@ const Navbar = () => {
           <h1>Anjalina Jijo</h1>
           </Name>
         <Bar>
-        <h3 style={{marginRight:'8%'}}>About</h3>
+          {/* <HashLink to="#Home" style={{textDecoration:'none',color:'white',fontSize:'20px',marginRight:'8%'}}>Home</HashLink> */}
+          <HashLink to="#About" style={{textDecoration:'none',color:'white',fontSize:'20px',marginRight:'8%'}}>About</HashLink>
+          <HashLink to="#Experience" style={{textDecoration:'none',color:'white',fontSize:'20px',marginRight:'8%'}}>Experience</HashLink>
+          <HashLink to="#Projects" style={{textDecoration:'none',color:'white',fontSize:'20px',marginRight:'8%'}}>Projects</HashLink>
+          <HashLink to="#Contact" style={{textDecoration:'none',color:'white',fontSize:'20px'}}>Contact</HashLink>
+        {/* <h3 style={{marginRight:'8%'}}>About</h3>
         <h3 style={{marginRight:'8%'}}>Work</h3>
-        <h3>Contact</h3>
+        <h3>Contact</h3> */}
         </Bar>
       {!isClicked ?
        (
@@ -43,18 +39,11 @@ const Navbar = () => {
                     
           <DropDown>
           <h1 style={{fontSize:'30px'}}>Anjalina Jijo</h1>
-          <NavLink to='/Skills' style={{textDecoration:'none',color:'white'}}>
-          About
-          </NavLink>
-          <NavLink to="/Experience" style={{textDecoration:'none',color:'white'}}>
-          Experience
-          </NavLink>
-          <NavLink to="/Project" style={{textDecoration:'none',color:'white'}}>
-          Projects
-          </NavLink>
-          <NavLink to="/Contact" style={{textDecoration:'none',color:'white'}}>
-          Contact
-          </NavLink>
+          {/* <HashLinkk to="#Home" style={{textDecoration:'none',color:'white',fontSize:'20px'}}>Home</HashLinkk> */}
+          <HashLinkk to="#About" style={{textDecoration:'none',color:'white',fontSize:'20px'}}>About</HashLinkk>
+          <HashLinkk to="#Experience" style={{textDecoration:'none',color:'white',fontSize:'20px'}}>Experience</HashLinkk>
+          <HashLinkk to="#Projects" style={{textDecoration:'none',color:'white',fontSize:'20px'}}>Projects</HashLinkk>
+          <HashLinkk to="#Contact" style={{textDecoration:'none',color:'white',fontSize:'20px'}}>Contact</HashLinkk>
           </DropDown>    
           </NavMenu>
 
@@ -68,17 +57,19 @@ const Navbar = () => {
 
 const Container = styled.div`
 display:flex;
+width:100vw;
 justify-content:space-between;
 align-items:center;
 `
 const Wrapper = styled.div`
 background-color:#000807;
+width:100vw;
 color:#fbf9ff;
 display:flex;
 flex-direction:column;
 `
 const Name = styled.div`
-display:inline;
+// display:inline;
 // width:auto;
 // margin-top:3%;
 margin-left:5%;
@@ -92,7 +83,6 @@ border-top: 7px solid #9395d3;
 width: 90%;
 margin: auto;
 z-index:5;
-// margin-top:10px;
 `
 const Bar = styled.div`
 display:flex;
@@ -104,7 +94,7 @@ margin-right:9%;
 }
 `
 const Menu = styled.div`
-width:100%;
+width:100vw;
 margin:5%;
 display:flex;
 justify-content:space-between;
@@ -138,8 +128,6 @@ font-size:30px;
 color:white;
 background-color:black;
 height:300px;
-// width:100vw;
-// position:absolute;
 margin-top:100px;
 padding-left:10px
 z-index:15;
@@ -148,7 +136,6 @@ display:flex;
 flex-direction:column;
 justify-content:space-between;
 align-items:center;
-// z-index:5;
 }
 `
 
@@ -156,7 +143,8 @@ const Button = styled.button `
 float:right;
 `
 
-const NavLink = styled(Link)`
+const HashLinkk = styled(HashLink)`
+
 &:hover {
   transform: scale(1.05);
 }

@@ -5,11 +5,12 @@ import Navbar from './Navbar'
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
+
 import Link from '@mui/material/Link';
 
 const Hero = () => {
     return (
-        <div>
+        <div id='Home'>
         <Navbar/>
         <Container className='hero-bg'>
         <Intro>
@@ -25,7 +26,7 @@ const Hero = () => {
         </Link>
         </Icons>
         <Icons>
-        <Link href="www.linkedin.com/in/anjalina-jijo" alt="GitHub" sx={{textDecoration:'none'}}>
+        <Link href="https://www.linkedin.com/in/anjalina-jijo/" alt="GitHub" sx={{textDecoration:'none'}}>
           
           <LinkedInIcon size="large" sx={{height:'35px',width:'35px',color:'white'}}/>
           {/* <p style={{fontSize:'20px',fontWeight:'bold',color:'#000807'}}>GitHub</p> */}
@@ -39,8 +40,8 @@ const Hero = () => {
         </Icons>
       </Socials>
      </div>
-      <p style={{wordWrap: 'break-word'}}>I am a Web Developer focused on building responsive 
-                    websites with great user Experence.
+      <p style={{wordWrap: 'break-word'}}>I am a Web Developer Focused on Building Responsive 
+                    Websites with Delightful User Experience
                 </p>
               </h1>
                 
@@ -48,12 +49,14 @@ const Hero = () => {
             </Intro>   
         </Container >
         </div>
+        
     )
 }
 
-const Container = styled.div `
+const Container = styled.div`
 background-color:#000807;
 height:100vh;
+width:100vw;
 color:#fbf9ff;
 display:flex;
 flex-direction:column;
