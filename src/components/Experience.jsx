@@ -10,27 +10,24 @@ const Experience = () => {
 
         <Card>
           <CardText>
-            <p style={{fontSize:'20px',marginTop:'50px',textAlign:'left'}}>Business Web Solutions <br />
-            <span style={{fontSize:'40px',fontWeight:'bold'}}>Software Intern</span><span>  <h6 style={{marginTop:'10px',marginBottom:'20px',fontSize:'15px'}}>March 2022 to March 2023</h6></span>
+            <p style={{fontSize:'40px',fontWeight:'bold',marginTop:'50px',textAlign:'left'}}>Software Intern<br />
+            <span style={{fontSize:'20px'}}>Business Web Solutions</span><span>  <h6 style={{marginTop:'10px',marginBottom:'8px',fontSize:'15px'}}>Remote, India</h6><h6 style={{marginTop:'10px',marginBottom:'1px',fontSize:'15px'}}>October 2022 to December 2022</h6></span>
             </p>
             <Skills>
             <Tech>
               <p>React</p>
               <p>Redux</p>
-              <p>Express</p>
-              <p>NodeJS</p>
-              <p>MongoDB</p>
+              <p>JavaScript</p>
+              <p>HTML</p>
+              <p>CSS</p>
               <p>Jira</p>
               <p>Git</p>
               <p>Agile</p>
             </Tech>
             </Skills>
-            <p style={{fontSize:'25px',textAlign:'left'}}> My role encompassed both front-end and back-end development, where I designed and implemented user interfaces using React and Redux,
-             ensuring a seamless and engaging user experience. On the server-side, I successfully 
-             implemented Express and NodeJS functionalities, collaborating closely with my fellow 
-             engineers.</p>
-            <p style={{fontSize:'25px',textAlign:'left'}}>Our work environment followed agile methodologies, and I actively participated in agile scrum meetings.
-             Additionally, I played a key role in modeling MongoDB schemas, integrating them efficiently with existing APIs to optimize data handling.</p>
+            <p style={{fontSize:'25px',textAlign:'left'}}> I made significant contributions to the front-end development of an Employee Management Software using React and Redux.
+              Primary responsibilities included  design and implement various front-end components that included creating interactive user interfaces and ensuring a consistent and aesthetically pleasing design.</p>
+            <p style={{fontSize:'25px',textAlign:'left'}}> I used Git to manage the source code, allowing for seamless collaboration with team members. Throughout the internship, agile methodologies, particularly Scrum was used to monitor project progress closely. </p>
 
             
           </CardText>
@@ -70,10 +67,11 @@ text-align:center;
 
 const Card = styled.div`
 display:flex;
-gap:20px;
+// gap:20px;
 // flex-direction:column;
 justify-content:center;
-// align-items:center;
+align-items:center;
+margin:0 auto;
 
 @media (max-width: 1100px) {
   flex-direction:column;
@@ -96,9 +94,9 @@ text-decoration-style:double;
 const CardText = styled.div`
 // background-color:#b3b7ee;
 min-height:400px;
-max-width:50%;
+width:50%;
 display:flex;
-text-justify:auto;
+// text-justify:auto;
 flex-direction:column;
 @media (max-width: 1100px) {
   max-width:80%;
@@ -111,6 +109,8 @@ display:flex;
 // flex-direction:column;
 justify-content:center;
 // align-items:center;
+// width:30%;
+max-width:30%;
 
 img{
   width:500px;

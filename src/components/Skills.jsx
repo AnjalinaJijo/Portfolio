@@ -110,9 +110,9 @@ align-items:center;
 const About = styled.div `
 // background-color:#b3b7ee;
 // background-color:#9395d3;
-border:15px solid #9395d3;
+border:10px solid #9395d3;
 min-height:520px;
-width:60%;
+width:50%;
 padding:35px;
 border-radius:20%;
 color:#000807;
@@ -141,7 +141,7 @@ p{
 const TechSkills = styled.div`
 display:flex;
 flex-direction:column;
-width:50%;
+width:40%;
 @media screen and (max-width: 768px) {
   width:90%;
  }

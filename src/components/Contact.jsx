@@ -191,7 +191,7 @@ height:auto;
 display:flex;
 gap:20px;
 flex-direction:column;
-margin:0 30px;
+margin:0 50px;
 // justify-content:center;
 // align-items:center;
 border:5px solid #9395d3;

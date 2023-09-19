@@ -1,6 +1,7 @@
 import { Description } from '@mui/icons-material';
 import React from 'react'
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Projects = () => {
   return (
@@ -21,7 +22,10 @@ const Projects = () => {
               <p>MongoDB</p>
             </Tech>
             </Skills>
+            
+            <View to='https://national-disaster-hub-ndh.onrender.com' target="_blank">
             <Button>View Project</Button>
+            </View>
             <Describe > 
            <p> A MERN stack application that allows disaster survivors to check in so that their
               dear ones know that they are safe.
@@ -33,7 +37,9 @@ const Projects = () => {
             </Describe>
           </CardText>
           <CardImg>
+          <Link to='https://national-disaster-hub-ndh.onrender.com' target="_blank">
           <img src="./images/NDH.png" style={{marginTop:'100px'}}/>
+          </Link>
           </CardImg>
         </Card>
 
@@ -49,7 +55,11 @@ const Projects = () => {
               <p>Material UI</p>
             </Tech>
             </Skills>
+            
+            <View to='https://travel-companion-2qh8.onrender.com' target="_blank">
             <Button>View Project</Button>
+         
+            </View>
             <Describe>
 
             <p>A travel website aimed at helping users find hotels, restaurants, and attractions based on specified location.
@@ -60,7 +70,9 @@ const Projects = () => {
             </Describe>
           </CardText>
           <CardImg>
-          <img src="./images/TravelCompanion.png" style={{marginTop:'110px'}}/>
+          <Link to='https://travel-companion-2qh8.onrender.com' target="_blank">
+          <img src="./images/travel_companion.png" style={{marginTop:'110px'}}/>
+          </Link>
           </CardImg>
         </Card>
 
@@ -179,12 +191,12 @@ p{
 }
 `
 
-const Button = styled.button`
+
+const View = styled(Link)`
 margin-top:20px;
 width:150px;
 height:50px;
-pading:5px;
-background-color: #a2a3bb;
+// background-color: #a2a3bb;
 font-weight:bold;
 font-size:20px;
 border-radius:5%;
@@ -192,6 +204,19 @@ border-radius:5%;
     transform: scale(1.05);
     background-color:#b3b7ee;
 }
+`
+const Button = styled.button`
+width:100%;
+height:100%;
+pading:5px;
+background-color: #a2a3bb;
+font-weight:bold;
+font-size:20px;
+border-radius:5%;
+// &:hover {
+//     transform: scale(1.05);
+//     background-color:#b3b7ee;
+// }
 `
 
 export default Projects
