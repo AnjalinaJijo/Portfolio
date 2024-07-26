@@ -115,7 +115,7 @@ const Skills = () => {
             <HighlightedText className="anim-bg" color="violet">
               engineering{" "}
             </HighlightedText>{" "}
-            and a minor in{" "}  <HighlightedText className="anim-bg" color="seagreen">computer</HighlightedText><HighlightedText className="anim-bg" color="seagreen"> science
+            and a minor in{" "}  <HighlightedText className="anim-bg" color="seagreen">computer </HighlightedText><HighlightedText className="anim-bg" color="seagreen">science
             </HighlightedText>
             , I love combining technology and design to build intuitive web
             applications.
