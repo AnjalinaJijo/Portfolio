@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import {
   FaReact,
-  FaNodeJs,
+  FaNode,
   FaHtml5,
   FaCss3Alt,
   FaJsSquare,
@@ -17,17 +17,21 @@ import {
   SiRedux,
   SiMongodb,
   SiPostgresql,
+  SiPostman,
   SiMysql,
   SiJest,
   SiTailwindcss,
   SiNextdotjs,
   SiBootstrap,
   SiFirebase,
+  SiExpress,
   SiVisualstudiocode,
   SiSupabase,
   SiCypress,
   SiCloudflare,
 } from "react-icons/si";
+
+import { IoLogoVercel } from "react-icons/io5";
 
 const Skills = () => {
   useEffect(() => {
@@ -152,7 +156,7 @@ const Skills = () => {
               <p>Tailwind CSS</p>
             </SkillCard>
             <SkillCard>
-              <FaNodeJs size={40} color="#68A063" />
+              <FaNode size={40} color="#68A063" />
               <p>RESTful APIs</p>
             </SkillCard>
           </Tech>
@@ -161,11 +165,11 @@ const Skills = () => {
           <CategoryTitle>BACK END DEVELOPMENT</CategoryTitle>
           <Tech>
             <SkillCard>
-              <FaNodeJs size={40} color="#68A063" />
+              <FaNode size={40} color="#68A063" />
               <p>Node.js</p>
             </SkillCard>
             <SkillCard>
-              <FaNodeJs size={40} color="#68A063" />
+              <SiExpress size={40} color="#68A063" />
               <p>Express</p>
             </SkillCard>
             <SkillCard>
@@ -207,7 +211,7 @@ const Skills = () => {
               <p>Jest</p>
             </SkillCard>
             <SkillCard>
-              <FaNodeJs size={40} color="#FF6C37" />
+              <SiPostman size={40} color="#FF6C37" />
               <p>Postman</p>
             </SkillCard>
           </Tech>
@@ -216,7 +220,7 @@ const Skills = () => {
           <CategoryTitle>DEPLOYMENT</CategoryTitle>
           <Tech>
             <SkillCard>
-              <FaNodeJs size={40} color="#000000" />
+              <IoLogoVercel size={40} color="#000000" />
               <p>Vercel</p>
             </SkillCard>
             <SkillCard>
