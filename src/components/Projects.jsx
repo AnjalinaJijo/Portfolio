@@ -65,7 +65,7 @@ const Container = styled.div`
 
 const Heading = styled.h1`
   font-size: 2rem;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
   color: black;
   text-align: center;
   font-weight: 700;
@@ -75,10 +75,10 @@ const Heading = styled.h1`
 
 const ProjectWrapper = styled.div`
   display: flex;
-  gap: 30px;
+  gap: 50px;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 1200px;
+  max-width: 1400px; /* Adjusted max-width to fit wider cards */
   width: 90%;
 `;
 
@@ -87,7 +87,7 @@ const ProjectCard = styled.div`
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  width: 350px;
+  width: 400px; /* Adjusted width for wider cards */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   
   &:hover {
@@ -165,7 +165,6 @@ const ViewButton = styled(Link)`
 `;
 
 export default Projects;
-
 
 
 // import React from 'react';
