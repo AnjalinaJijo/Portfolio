@@ -1,5 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useRef } from "react";
 import styled from "styled-components";
+
+import { debounce } from "lodash";
+
 import {
   FaReact,
   FaNode,
@@ -30,39 +33,63 @@ import {
   SiCypress,
   SiCloudflare,
 } from "react-icons/si";
-
+import { TbApi } from "react-icons/tb";
 import { IoLogoVercel } from "react-icons/io5";
 
 const Skills = () => {
+
+  const aboutRef = useRef(null);
+
   useEffect(() => {
-    const handleScroll = () => {
-      const elements = document.querySelectorAll(".anim-bg");
+    const elements = document.querySelectorAll(".anim-bg");
+    const aboutSection = aboutRef.current;
 
-      elements.forEach((element, index) => {
-        const rect = element.getBoundingClientRect();
-        const isInView = rect.top >= 0 && rect.bottom <= window.innerHeight;
+    const animateSequentially = (index) => {
+      if (index >= elements.length) return;
 
-        if (isInView) {
-          const delay = index * 500;
-          element.style.setProperty("--bg-width", "100%");
-          element.style.setProperty("--animation-delay", `${delay}ms`);
-        } else {
-          element.style.setProperty("--bg-width", "0%");
-          element.style.setProperty("--animation-delay", "0ms");
-        }
-      });
+      const element = elements[index];
+      element.style.setProperty("--bg-width", "100%");
+      element.setAttribute("data-animated", "true");
+
+      setTimeout(() => {
+        animateSequentially(index + 1);
+      }, 500); // 1000ms for animation duration + 500ms pause
     };
 
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = debounce(() => {
+      const rect = aboutSection.getBoundingClientRect();
+      const isInView = rect.top < window.innerHeight && rect.bottom > 0;
 
+      if (isInView) {
+        // Start animation if the section is in view
+        animateSequentially(0);
+        window.removeEventListener("scroll", handleScroll); // Remove listener after animation starts
+      } else {
+        // Reset animation if the section is out of view
+        elements.forEach((element) => {
+          const isAnimated = element.getAttribute("data-animated") === "true";
+          if (isAnimated) {
+            element.style.setProperty("--bg-width", "0%");
+            element.removeAttribute("data-animated");
+          }
+        });
+      }
+    },20) // Debounce delay in milliseconds
+
+    // Listen for scroll events
+    window.addEventListener("scroll", handleScroll);
+    // Initial check in case the section is already in view
+    handleScroll();
+
+    // Cleanup event listener on component unmount
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
 
   return (
     <Container id="About">
       <Wrapper>
-        <About>
+        <About ref={aboutRef}>
           <Wrap>
             <Heading>ABOUT ME</Heading>
           </Wrap>
@@ -88,9 +115,7 @@ const Skills = () => {
             <HighlightedText className="anim-bg" color="violet">
               engineering{" "}
             </HighlightedText>{" "}
-            and a{" "}
-            <HighlightedText className="anim-bg" color="seagreen">
-              minor in computer science
+            and a minor in{" "}  <HighlightedText className="anim-bg" color="seagreen">computer</HighlightedText><HighlightedText className="anim-bg" color="seagreen"> science
             </HighlightedText>
             , I love combining technology and design to build intuitive web
             applications.
@@ -156,7 +181,7 @@ const Skills = () => {
               <p>Tailwind CSS</p>
             </SkillCard>
             <SkillCard>
-              <FaNode size={40} color="#68A063" />
+              <TbApi size={40} color="#68A063" />
               <p>RESTful APIs</p>
             </SkillCard>
           </Tech>
@@ -184,6 +209,15 @@ const Skills = () => {
               <SiPostgresql size={40} color="#336791" />
               <p>PostgreSQL</p>
             </SkillCard>
+            <SkillCard>
+              <SiSupabase size={40} color="#3ECF8E" />
+              <p>Supabase</p>
+            </SkillCard>
+            <SkillCard>
+              <SiFirebase size={40} color="#FFCA28" />
+              <p>Firebase</p>
+            </SkillCard>
+
           </Tech>
         </Category>
         <Category>
@@ -231,11 +265,7 @@ const Skills = () => {
         </Category>
         <Category>
           <CategoryTitle>OTHER</CategoryTitle>
-          <Tech>
-            <SkillCard>
-              <SiSupabase size={40} color="#3ECF8E" />
-              <p>Supabase</p>
-            </SkillCard>
+          <Tech> 
             <SkillCard>
               <SiCloudflare size={40} color="#F38020" />
               <p>Cloudflare</p>
@@ -391,7 +421,7 @@ const HighlightedText = styled.span`
   &::before {
     content: "";
     position: absolute;
-    width: var(--bg-width, 0%);
+    width: var(--bg-width, 0%);//0% is the default
     height: 100%;
     background: ${({ color }) => color || "violet"}; /* Use the color prop */
     opacity: 0.2; /* Adjust opacity as needed */
@@ -403,453 +433,3 @@ const HighlightedText = styled.span`
 `;
 
 export default Skills;
-
-// import React, { useEffect } from "react";
-// import styled from "styled-components";
-
-// const Skills = () => {
-//   useEffect(() => {
-//     const handleScroll = () => {
-//       const elements = document.querySelectorAll(".anim-bg");
-
-//       elements.forEach((element, index) => {
-//         const rect = element.getBoundingClientRect();
-//         const isInView = rect.top >= 0 && rect.bottom <= window.innerHeight;
-
-//         if (isInView) {
-//           // Apply a delay based on the element's index
-//           const delay = index * 500; // Delay each element by 0.5 seconds
-//           element.style.setProperty("--bg-width", "100%");
-//           element.style.setProperty("--animation-delay", `${delay}ms`);
-//         } else {
-//           element.style.setProperty("--bg-width", "0%");
-//           element.style.setProperty("--animation-delay", "0ms");
-//         }
-//       });
-//     };
-
-//     // Initial check
-//     handleScroll();
-
-//     // Add scroll event listener
-//     window.addEventListener("scroll", handleScroll);
-
-//     // Cleanup
-//     return () => window.removeEventListener("scroll", handleScroll);
-//   }, []);
-
-//   return (
-//     <Container id="About">
-//       <Wrapper>
-//         <About>
-//           <Wrap>
-//             <Heading>ABOUT ME</Heading>
-//           </Wrap>
-//           <p>
-//             I'm{" "}
-//             <HighlightedText className="anim-bg" color="violet">
-//               Anjalina
-//             </HighlightedText>
-//             , a{" "}
-//             <HighlightedText className="anim-bg" color="blue">
-//               Web Developer
-//             </HighlightedText>{" "}
-//             and the founder of{" "}
-//             <HighlightedText className="anim-bg" color="yellow">
-//               BudgetBrainy
-//             </HighlightedText>
-//             , a smart solution for effortless budget management. With a
-//             bachelor's in{" "}
-//             <HighlightedText className="anim-bg" color="salmon">
-//               electronics{" "}
-//             </HighlightedText>{" "}
-//             & communication{" "}
-//             <HighlightedText className="anim-bg" color="violet">
-//               engineering{" "}
-//             </HighlightedText>{" "}
-//             and a{" "}
-//             <HighlightedText className="anim-bg" color="seagreen">
-//               minor in computer science
-//             </HighlightedText>
-//             , I love combining technology and design to build intuitive web
-//             applications.
-//           </p>
-
-//           <p>
-//             I'm{" "}
-//             <HighlightedText className="anim-bg" color="violet">
-//               friendly
-//             </HighlightedText>{" "}
-//             and{" "}
-//             <HighlightedText className="anim-bg" color="salmon">
-//               collaborative
-//             </HighlightedText>
-//             , always excited to work with others. Let's connect and create
-//             something amazing together!
-//           </p>
-//           <p>
-//             I'm currently looking for a new role as a developer.{" "}
-//             <HighlightedText className="anim-bg" color="blue">
-
-//               Hire me?
-//             </HighlightedText>
-//           </p>
-//         </About>
-//         <TechSkills>
-//           <TechHeading>
-//             <h1>MY SKILLS</h1>
-//           </TechHeading>
-//           <Tech>
-//             <p>React</p>
-//             <p>Redux</p>
-//             <p>Express</p>
-//             <p>Node.js</p>
-//             <p>MongoDB</p>
-//             <p>Jira</p>
-//             <p>Git</p>
-//             <p>RESTful APIs</p>
-//             <p>HTML</p>
-//             <p>CSS</p>
-//             <p>JavaScript</p>
-//             <p>Bootstrap</p>
-//             <p>Firebase</p>
-//             <p>Visual Studio</p>
-//             <p>Command Prompt</p>
-//             <p>Eclipse</p>
-//           </Tech>
-//         </TechSkills>
-//       </Wrapper>
-//     </Container>
-//   );
-// };
-
-// const Container = styled.div`
-//   background-color: #ffffff;
-//   height: auto;
-//   width: 100vw;
-//   color: #00000;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   padding-top: 30px;
-//   padding-bottom: 50px;
-// `;
-
-// const Wrapper = styled.div`
-//   height: auto;
-//   width: 100vw;
-//   color: #fbf9ff;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-
-//   padding-left:30px;
-//   padding-right:30px;
-
-//   @media screen and (max-width: 768px) {
-//     flex-direction: column;
-//     gap: 10px;
-//   }
-// `;
-
-// const Heading = styled.h1`
-//   margin-top: 10%;
-//   margin-bottom: 6%;
-//   font-size: 25px;
-
-//   @media (max-width: 900px) {
-//     font-size: 20px;
-//   }
-//   @media (max-width: 340px) {
-//     font-size: 22px;
-//   }
-// `;
-
-// const Wrap = styled.div`
-//   height: auto;
-//   // width: 50%;
-//   color: #00000;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-// `;
-
-// const About = styled.div`
-//   min-height: 520px;
-//   width: 1200px;
-//   padding: 35px;
-//   color: #0f172a;
-//   display: flex;
-//   flex-wrap: wrap;
-//   flex-direction: column;
-//   align-items: center;
-//   text-align: center;
-
-//   p {
-//     font-size: 20px;
-//   }
-
-//   @media screen and (max-width: 768px) {
-//     border-radius: 5%;
-//     width: 90%;
-//     margin: 50px auto;
-//     p {
-//       font-size: 15px;
-//     }
-//   }
-// `;
-
-// const TechSkills = styled.div`
-//   display: flex;
-//   items-align: center;
-//   justify-content: center;
-//   flex-direction: column;
-//   // width: 40%;
-
-//   @media screen and (max-width: 768px) {
-//     // width: 90%;
-//   }
-// `;
-
-// const TechHeading = styled.div`
-//   h1 {
-//     font-size: 25px;
-//     font-weight: bold;
-//     color: black;
-//     text-align: center;
-//   }
-
-//   @media (max-width: 900px) {
-//     h1 {
-//       font-size: 20px;
-//     }
-//   }
-//   @media (max-width: 340px) {
-//     h1 {
-//       font-size: 22px;
-//     }
-//   }
-// `;
-
-// const Tech = styled.div`
-//   display: flex;
-//   margin-left: 20%;
-//   margin-right: 20%;
-//   flex-wrap: wrap;
-//   gap: 0 10px;
-
-//   p {
-//     font-size: 20px;
-//     background-color: #000807;
-//     padding: 10px;
-//     margin-bottom: 0px;
-//   }
-// `;
-
-// const HighlightedText = styled.span`
-//   position: relative;
-//   overflow: hidden; /* Ensure the pseudo-element doesn’t overflow */
-//   line-height: 1; /* Ensure line-height matches parent text */
-//   vertical-align: baseline; /* Ensure vertical alignment with other text */
-
-//   &::before {
-//     content: "";
-//     position: absolute;
-//     width: var(--bg-width, 0%);
-//     height: 100%;
-//     background: ${({ color }) => color || "violet"}; /* Use the color prop */
-//     opacity: 0.2; /* Adjust opacity as needed */
-//     transition: width 1s ease-in-out;
-//     transform: translateY(0); /* Center the pseudo-element vertically */
-//     top: 0;
-//     left: 0;
-//   }
-// `;
-
-// export default Skills;
-
-// import React from "react";
-// import styled from "styled-components";
-
-// const Skills = () => {
-//   return (
-//     <Container id="About">
-//       <Wrap>
-//         <Heading>ABOUT ME</Heading>
-//       </Wrap>
-//       <Wrapper>
-//         <About>
-//           {/* <h1 style={{fontSize:'20px'}}>Passionate, Quick-Learning Developer | A Life Long Learner</h1> */}
-//           <p>
-//             I'm Anjalina, a Web Developer and the founder of BudgetBrainy, a
-//             smart solution for effortless budget management. With a bachelor's
-//             in electronics & communication and a minor in computer science, I
-//             love combining technology and design to build intuitive web
-//             applications.
-//           </p>
-
-//           <p>
-//             I'm friendly and collaborative, always excited to work with others.
-//             Let's connect and create something amazing together!
-//           </p>
-//           <p>
-//           Feel free to reach out and say hello!
-//            </p>
-
-//           {/* <p>Outside of development, I enjoy keeping up with the latest tech trends and exploring new ideas. Let's connect and explore how we can collaborate on your next project!
-//         </p> */}
-//           {/* <p>I am a friendly and highly collaborative person who is easy to work with.
-//           Join me on this journey as I continue to evolve and create, always pushing the boundaries of
-//           what's possible in the digital landscape.
-//           Feel free to reach out and say hello!
-//         </p> */}
-//         </About>
-//         <TechSkills>
-//           <TechHeading>
-//             <h1>MY SKILLS</h1>
-//           </TechHeading>
-//           <Tech>
-//             <p>React</p>
-//             <p>Redux</p>
-//             <p>Express</p>
-//             <p>Node.js</p>
-//             <p>MongoDB</p>
-//             <p>Jira</p>
-//             <p>Git</p>
-//             <p>RESTful APIs</p>
-//             {/* <p>Agile</p> */}
-//             <p>HTML</p>
-//             <p>CSS</p>
-
-//             <p>JavaScript</p>
-//             <p>Bootstrap</p>
-//             <p>Firebase</p>
-//             <p>Visual Studio</p>
-//             <p>Command Prompt</p>
-//             <p>Eclipse</p>
-//             {/* <p>Linux</p> */}
-//           </Tech>
-//         </TechSkills>
-//       </Wrapper>
-//     </Container>
-//   );
-// };
-
-// const Container = styled.div`
-//   // slate-900
-//   background-color: #0f172a;
-//   height: auto;
-//   width: 100vw;
-//   color: #ffffff;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   padding-top: 30px;
-//   padding-bottom: 50px;
-// `;
-// const Wrapper = styled.div`
-//   // background-color:#000807;
-//   height: auto;
-//   width: 100vw;
-//   color: #fbf9ff;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-
-//   @media screen and (max-width: 768px) {
-//     flex-direction: column;
-//     gap: 30px;
-//   }
-// `;
-// const Heading = styled.h1`
-//   margin-top: 10%;
-//   margin-bottom: 6%;
-//   font-size: 40px;
-
-//   @media (max-width: 900px) {
-//     font-size: 30px;
-//   }
-//   @media (max-width: 340px) {
-//     font-size: 25px;
-//   }
-// `;
-
-// const Wrap = styled.div`
-//   // background-color:#a2a3bb;
-//   height: auto;
-//   width: 50%;
-//   // color:#000807;
-//   color: #ffffff;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   // text-align:center;
-// `;
-// const About = styled.div`
-//   // background-color:#b3b7ee;
-//   // background-color:#9395d3;
-//   // border:10px solid #9395d3;
-//   min-height: 520px;
-//   width: 50%;
-//   padding: 35px;
-//   // border-radius:20%;
-//   color: #ffffff;
-//   // color:white;
-//   display: flex;
-//   flex-wrap: wrap;
-//   flex-direction: column;
-//   // justify-content: center;
-//   align-items: center;
-//   // margin-left: 50px;
-//   // margin-top: 50px;
-//   text-align:center;
-
-//   p {
-//     font-size: 20px;
-//   }
-//   @media screen and (max-width: 768px) {
-//     border-radius: 5%;
-//     width: 90%;
-//     margin: 50px auto;
-//     p {
-//       font-size: 19px;
-//     }
-//   }
-// `;
-
-// const TechSkills = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   width: 40%;
-//   @media screen and (max-width: 768px) {
-//     width: 90%;
-//   }
-// `;
-// const TechHeading = styled.div`
-//   h1 {
-//     font-size: 30px;
-//     font-weight: bold;
-//     color: "#ffffff";
-//     text-align: center;
-//   }
-// `;
-// const Tech = styled.div`
-//   display: flex;
-//   margin-left: 20%;
-//   margin-right: 20%;
-//   flex-wrap: wrap;
-//   gap: 0 10px;
-//   // justify-content:center;
-//   p {
-//     font-size: 20px;
-//     background-color: #000807;
-//     padding: 10px;
-//     margin-bottom: 0px;
-//   }
-// `;
-
-// export default Skills;

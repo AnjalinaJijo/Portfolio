@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Projects = () => {
   return (
     <Container id='Projects'>
-      <Heading>Highlighted Projects</Heading>
+      <Heading>Projects</Heading>
       <ProjectWrapper>
         <ProjectCard>
           <CardImage src="./images/NDH.png" alt="National Disaster Hub" />

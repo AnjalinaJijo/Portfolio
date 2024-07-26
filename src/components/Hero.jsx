@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 import Navbar from "./Navbar";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -15,15 +16,8 @@ const Hero = () => {
     const carouselText = [
       { text: "Anjalina", color: "#a3e635" },
       { text: "a Developer", color: "#fde047" },
-      // "#fde047" yellow
     ];
 
-    // async function typeSentence(sentence, delay = 100) {
-    //   for (const letter of sentence) {
-    //     await waitForMs(delay);
-    //     setText((prev) => prev + letter);
-    //   }
-    // }
     async function typeSentence(sentence, delay = 200) {
       let accumulatedText = "";
       for (const letter of sentence) {
@@ -75,7 +69,12 @@ const Hero = () => {
       <Navbar />
       <Container>
         <Intro>
-          <IntroImg src="./images/girlimg.png" />
+          <IntroImg
+            src="./images/girlimg.png"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+          />
           <IntroText>
             <TypingContainer>
               <span className="sentence">
@@ -135,15 +134,14 @@ const Hero = () => {
 // Styled Components
 const Container = styled.div`
   background-color: #000807;
-  // height: 100vh;
   width: 100vw;
   color: #fbf9ff;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top:80px;
-  padding-bottom:100px;
+  padding-top: 80px;
+  padding-bottom: 100px;
 `;
 
 const Intro = styled.div`
@@ -190,7 +188,7 @@ const IntroText = styled.div`
   }
 `;
 
-const IntroImg = styled.img`
+const IntroImg = styled(motion.img)`
   @media (max-width: 900px) {
     width: 180px;
     height: 200px;
@@ -213,9 +211,8 @@ const TypingContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom:20px;
+  padding-bottom: 20px;
   font-weight: bold;
- 
 
   .sentence {
     font-size: 50px;
@@ -249,6 +246,7 @@ const TypingContainer = styled.div`
       font-size: 40px;
     }
   }
+
   @media (max-width: 400px) {
     .sentence {
       font-size: 23px;
@@ -257,6 +255,7 @@ const TypingContainer = styled.div`
 `;
 
 export default Hero;
+
 
 // import React, { useEffect } from "react";
 // import styled from "styled-components";
