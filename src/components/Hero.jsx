@@ -133,7 +133,9 @@ const Hero = () => {
 
 // Styled Components
 const Container = styled.div`
-  background-color: #000807;
+  // background-color: #000807;
+  background-color: black;
+  
   width: 100vw;
   color: #fbf9ff;
   display: flex;
