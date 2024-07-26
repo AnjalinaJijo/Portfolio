@@ -3,6 +3,8 @@ import styled from'styled-components'
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 
+// import { GiHamburgerMenu } from "react-icons/gi";
+
 import { HashLink } from 'react-router-hash-link';
 
 const Navbar = () => {
@@ -30,12 +32,12 @@ const Navbar = () => {
        (
         <Menu>
         <h1>Anjalina Jijo</h1>
-        <button onClick={handleClick}><MenuIcon sx={{height:'40px',width:'40px'}}/></button>
+        <button onClick={handleClick}>  <MenuIcon sx={{height:'20px',width:'20px'}}/> </button>
         </Menu>
        ): (
           <NavMenu>
           
-          <Button onClick={handleClick}><CloseIcon sx={{height:'50px',width:'50px'}}/></Button> 
+          <Button onClick={handleClick}><CloseIcon sx={{height:'20px',width:'20px'}}/></Button> 
                     
           <DropDown>
           <h1 style={{fontSize:'30px'}}>Anjalina Jijo</h1>
@@ -60,6 +62,8 @@ display:flex;
 width:100vw;
 justify-content:space-between;
 align-items:center;
+padding-top:10px;
+padding-bottom:10px;
 `
 const Wrapper = styled.div`
 background-color:#000807;
@@ -69,11 +73,16 @@ display:flex;
 flex-direction:column;
 `
 const Name = styled.div`
-// display:inline;
-// width:auto;
-// margin-top:3%;
 margin-left:5%;
+h1{
+font-size:25px;
+}
+
 @media screen and (max-width: 768px) {
+  display:none;
+ }
+
+@media screen and (max-width: 350px) {
   display:none;
  }
 
@@ -95,12 +104,19 @@ margin-right:9%;
 `
 const Menu = styled.div`
 width:100vw;
-margin:5%;
+margin-left:5%;
+margin-right:5%;
 display:flex;
 justify-content:space-between;
 align-items:center;
 
 margin-right:5%;
+
+  h1{
+  font-size:20px;
+  }
+
+  
 @media screen and (min-width: 768px) {
   display:none;
  }
