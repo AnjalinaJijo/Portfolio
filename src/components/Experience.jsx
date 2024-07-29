@@ -225,6 +225,7 @@ const Experience = () => {
           <TechStacks>
             <TechStack>Next.js</TechStack>
             <TechStack>Supabase</TechStack>
+            <TechStack>Redux</TechStack>
             <TechStack>Stripe</TechStack>
             <TechStack>Docker</TechStack>
             <TechStack>Tailwind CSS</TechStack>
