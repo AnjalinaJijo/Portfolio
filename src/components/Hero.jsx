@@ -12,13 +12,15 @@ const Hero = () => {
   const featureTextRef = useRef(null);
   const cursorRef = useRef(null);
 
+  // "#fde047"
   useEffect(() => {
     const carouselText = [
-      { text: "Anjalina", color: "#a3e635" },
-      { text: "a Developer", color: "#fde047" },
+      { text: "Full-stack", color: "#3b82f6" },
+      { text: "Front-end", color: "#a3e635" },
+      { text: "Back-end", color: "#e879f9" },
     ];
 
-    async function typeSentence(sentence, delay = 200) {
+    async function typeSentence(sentence, delay = 100) {
       let accumulatedText = "";
       for (const letter of sentence) {
         await waitForMs(delay);
@@ -33,7 +35,7 @@ const Hero = () => {
 
     async function deleteSentence() {
       while (featureTextRef.current.innerHTML.length > 0) {
-        await waitForMs(200);
+        await waitForMs(50);
         setText((prev) => prev.slice(0, -1));
       }
     }
@@ -76,13 +78,16 @@ const Hero = () => {
             transition={{ duration: 1, ease: "easeOut" }}
           />
           <IntroText>
+
+            <h1>Hi, I'm <NameSpan>Anjalina</NameSpan></h1>
             <TypingContainer>
               <span className="sentence">
-                Hi, I am{" "}
+                A {" "}
                 <span id="feature-text" ref={featureTextRef}>
                   {text}
                 </span>
                 <span className="input-cursor" ref={cursorRef}></span>
+                {" "}Developer
               </span>
             </TypingContainer>
 
@@ -169,10 +174,17 @@ const IntroText = styled.div`
   margin: 20px;
   width: 50vw;
   padding: 30px;
+  
 
   p {
-    font-size: 20px;
+    font-size: 8px;
     margin: 0;
+  }
+  
+  h1{
+  font-size: 40px;
+
+  
   }
 
   @media (max-width: 900px) {
@@ -181,6 +193,10 @@ const IntroText = styled.div`
     p {
       font-size: 20px;
     }
+      h1{
+      font-size: 35px;
+      }
+
   }
 
   @media (max-width: 770px) {
@@ -188,7 +204,11 @@ const IntroText = styled.div`
     p {
       font-size: 15px;
     }
-  }
+    h1 {
+      font-size: 30px;
+    }
+}
+
 `;
 
 const IntroImg = styled(motion.img)`
@@ -216,9 +236,10 @@ const TypingContainer = styled.div`
   align-items: center;
   padding-bottom: 20px;
   font-weight: bold;
+  margin-bottom:10px;
 
   .sentence {
-    font-size: 50px;
+    font-size: 35px;
     color: white;
     white-space: nowrap;
   }
@@ -240,13 +261,13 @@ const TypingContainer = styled.div`
 
   @media (max-width: 900px) {
     .sentence {
-      font-size: 40px;
+      font-size: 30px;
     }
   }
 
   @media (max-width: 770px) {
     .sentence {
-      font-size: 40px;
+      font-size: 25px;
     }
   }
 
@@ -255,6 +276,11 @@ const TypingContainer = styled.div`
       font-size: 23px;
     }
   }
+`;
+
+const NameSpan = styled.span`
+color: #c084fc;
+// color: #7c4dff;
 `;
 
 export default Hero;

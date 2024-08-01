@@ -53,7 +53,7 @@ const Skills = () => {
 
       setTimeout(() => {
         animateSequentially(index + 1);
-      }, 500); // 1000ms for animation duration + 500ms pause
+      }, 250); // 1000ms for animation duration + 500ms pause
     };
 
     const handleScroll = debounce(() => {
