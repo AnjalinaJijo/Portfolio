@@ -15,7 +15,7 @@ const Hero = () => {
   // "#fde047"
   useEffect(() => {
     const carouselText = [
-      { text: "Full-stack", color: "#3b82f6" },
+      { text: "Full-stack", color: "#ec4899" },
       { text: "Front-end", color: "#a3e635" },
       { text: "Back-end", color: "#e879f9" },
     ];
