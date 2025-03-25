@@ -122,7 +122,7 @@
 //   font-weight: 600;
 //   color: #555;
 //   margin: 0;
-  
+
 //   a {
 //     color: #7c4dff;
 //     text-decoration: none;
@@ -143,7 +143,7 @@
 //   line-height: 1.6;
 //   color: #333;
 //   margin: 10px 0;
-  
+
 //   a {
 //     color: #7c4dff;
 //     text-decoration: none;
@@ -214,6 +214,38 @@ const Experience = () => {
       {/* Founder Experience */}
       <Card>
         <CardImg>
+          <img src="./images/CompareNook.png" alt="CompareNook" />
+        </CardImg>
+        <CardContent>
+          <Role>
+            <RoleTitle>Founder and Developer</RoleTitle>
+            <CompanyName>CompareNook</CompanyName>
+            <Dates>July 2023 - Present</Dates>
+          </Role>
+          <TechStacks>
+            <TechStack>Next.js</TechStack>
+            <TechStack>Node.js</TechStack>
+            <TechStack>Supabase</TechStack>
+            <TechStack>Redux</TechStack>
+            {/* <TechStack>Stripe</TechStack> */}
+            <TechStack>Docker</TechStack>
+            <TechStack>Tailwind CSS</TechStack>
+            <TechStack>Git</TechStack>
+            <TechStack>Vercel</TechStack>
+            <TechStack>Heroku</TechStack>
+            {/* <TechStack>Cypress</TechStack>
+            <TechStack>Jest</TechStack> */}
+          </TechStacks>
+          <Description>
+            CompareNook is a price comparison platform designed to help users make smarter purchasing decisions. I built it end-to-end, integrating APIs, ensuring data accuracy, and maintaining a seamless user experience.
+          </Description>
+          <ViewButton href="https://www.comparenook.com" target="_blank" rel="noopener noreferrer">View Site</ViewButton>
+        </CardContent>
+      </Card>
+
+      {/* Budget Brainy Founder Experience */}
+      {/* <Card>
+        <CardImg>
           <img src="./images/Budgetbrainy.png" alt="BudgetBrainy" />
         </CardImg>
         <CardContent>
@@ -239,7 +271,7 @@ const Experience = () => {
           </Description>
           <ViewButton href="https://budgetbrainy.com" target="_blank" rel="noopener noreferrer">View Site</ViewButton>
         </CardContent>
-      </Card>
+      </Card> */}
 
       {/* Previous Experience */}
       <Card>

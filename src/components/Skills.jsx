@@ -104,9 +104,9 @@ const Skills = () => {
             </HighlightedText>{" "}
             and the founder of{" "}
             <HighlightedText className="anim-bg" color="yellow">
-              BudgetBrainy
+              CompareNook
             </HighlightedText>
-            , a smart solution for effortless budget management. With a
+            ,  a price comparison platform that helps users compare prices across Walmart, Amazon, and eBay. With a
             bachelor's in{" "}
             <HighlightedText className="anim-bg" color="salmon">
               electronics{" "}
